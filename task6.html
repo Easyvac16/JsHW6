@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mess {
+            position: fixed;
+            padding: 5px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            display: flex;
+            position: relative;
+        }
+
+        .button {
+            position: relative;
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            background-color: #333;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="button-container">
+        <div class="button" onmouseover="showMess(this, 'Do homework')">Don't click</div>
+        <div class="button" onmouseover="showMess(this, 'Do labs')">Don't click</div>
+        <div class="button" onmouseover="showMess(this, 'Just do it')">Don't click</div>
+    </div>
+    <hr>
+    <a href="task1.html">Task 1</a>
+    <a href="task2.html">Task 2</a>
+    <a href="task3.html">Task 3</a>
+    <a href="task4.html">Task 4</a>
+    <a href="task5.html">Task 5</a>
+    <a href="task7.html">Task 7</a>
+    <a href="task8.html">Task 8</a>
+
+    <script>
+        function showMess(element, text) {
+            let mess = document.createElement('div');
+            mess.className = 'mess';
+            mess.innerHTML = text;
+
+            let rect = element.getBoundingClientRect();
+            let topPosition = rect.top - mess.offsetHeight - 5;
+
+            if (topPosition < 15) {
+                topPosition = rect.bottom + 5;
+            }
+
+            mess.style.left = rect.left + 'px';
+            mess.style.top = topPosition + 'px';
+
+            document.body.appendChild(mess);
+
+            element.addEventListener('mouseout', function () {
+                mess.remove();
+            });
+        }
+    </script>
+
+</body>
+
+</html>

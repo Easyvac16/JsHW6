@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+            background-color: blanchedalmond;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        li {
+            cursor: pointer;
+        }
+
+        .folder {
+            color: rgb(0, 0, 0);
+        }
+
+        .collapsed ul {
+            display: none;
+        }
+        .collapsed li:hover
+        {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="directoryTree">
+        <li class="folder">Disk C
+            <ul class="collapsed">
+                <li>Program Files</li>
+                <li>Users</li>
+            </ul>
+        </li>
+        <li class="folder">Disk D
+            <ul class="collapsed">
+                <li>Games</li>
+                <li>Photo's</li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <a href="task1.html">Task 1</a>
+    <a href="task2.html">Task 2</a>
+    <a href="task3.html">Task 3</a>
+    <a href="task4.html">Task 4</a>
+    <a href="task5.html">Task 5</a>
+    <a href="task6.html">Task 6</a>
+    <a href="task8.html">Task 8</a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let folders = document.querySelectorAll('.folder');
+
+            folders.forEach(function (folder) {
+                folder.addEventListener('click', function (event) {
+                    if (event.target === this) {
+                        event.stopPropagation();
+                        this.classList.toggle('collapsed');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: blanchedalmond;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .orange {
+            background-color: rgb(255, 153, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li onclick="OrangeColor(this)">Metro 2033</li>
+        <li onclick="OrangeColor(this)">Metro 2034</li>
+        <li onclick="OrangeColor(this)">Metro 2035</li>
+    </ul>
+    <a href="task1.html">Task 1</a>
+    <a href="task2.html">Task 2</a>
+    <a href="task3.html">Task 3</a>
+    <a href="task4.html">Task 4</a>
+    <a href="task6.html">Task 6</a>
+    <a href="task7.html">Task 7</a>
+    <a href="task8.html">Task 8</a>
+
+    <script>
+        function OrangeColor(element) {
+            let status = element.classList.contains('orange');
+
+            document.querySelectorAll('ul li').forEach(function (item) 
+            {
+                item.classList.remove('orange');
+            });
+
+            if (!status) 
+            {
+                element.classList.add('orange');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

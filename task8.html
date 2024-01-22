@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #resizableBlock {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+            overflow: hidden;
+            padding: 10px;
+            margin: 20px;
+            position: relative;
+        }
+
+        #resizeHandle {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: se-resize;
+            width: 0;
+            height: 0;
+            border-right: 10px solid;
+            border-top: 10px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="resizableBlock" contenteditable="true">
+        <p>This is a resizable block. Click and drag the bottom-right corner to resize.</p>
+        <div id="resizeHandle"></div>
+    </div>
+    <a href="task1.html">Task 1</a>
+    <a href="task2.html">Task 2</a>
+    <a href="task3.html">Task 3</a>
+    <a href="task4.html">Task 4</a>
+    <a href="task5.html">Task 5</a>
+    <a href="task6.html">Task 6</a>
+    <a href="task7.html">Task 7</a>
+    <script>
+        let resizableBlock = document.getElementById('resizableBlock');
+        let resizeHandle = document.getElementById('resizeHandle');
+        let isResizing = false;
+        let originalX;
+        let originalY;
+
+        resizeHandle.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            isResizing = true;
+            originalX = e.clientX;
+            originalY = e.clientY;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!isResizing) return;
+
+            let width = e.clientX - resizableBlock.getBoundingClientRect().left - 16;
+            let height = e.clientY - resizableBlock.getBoundingClientRect().top - 16;
+
+            resizableBlock.style.width = `${width}px`;
+            resizableBlock.style.height = `${height}px`;
+
+            originalX = e.clientX;
+            originalY = e.clientY;
+        });
+
+        document.addEventListener('mouseup', function () {
+            isResizing = false;
+        });
+    </script>
+
+</body>
+
+</html>
